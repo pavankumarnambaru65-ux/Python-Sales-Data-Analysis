@@ -69,105 +69,105 @@ print(monthly_sales[["Month", "Sales"]])
 
 # Monthly Sales Bar Chart
 
-#plt.figure(figsize=(10, 5))
-#plt.bar(monthly_sales["Month"], monthly_sales["Sales"])
-#plt.gca().yaxis.set_major_formatter(
-    #FuncFormatter(lambda x, _: f'{x/1000000:.0f}M')
-#)
-#plt.title("Monthly Sales", fontsize=16, fontweight="bold")
-#plt.xlabel("Month", fontsize=10)
-#plt.ylabel("Sales (Millions)", fontsize=10)
-#plt.xticks(fontsize=10)
-#plt.yticks(fontsize=10)
-#plt.tight_layout()
-#plt.savefig("output/monthly_sales_bar.png", dpi=300, bbox_inches="tight")
-#plt.show()
+plt.figure(figsize=(10, 5))
+plt.bar(monthly_sales["Month"], monthly_sales["Sales"])
+plt.gca().yaxis.set_major_formatter(
+    FuncFormatter(lambda x, _: f'{x/1000000:.0f}M')
+)
+plt.title("Monthly Sales", fontsize=16, fontweight="bold")
+plt.xlabel("Month", fontsize=10)
+plt.ylabel("Sales (Millions)", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.tight_layout()
+plt.savefig("output/monthly_sales_bar.png", dpi=300, bbox_inches="tight")
+plt.show()
 
 # Monthly Sales Line Chart
 
-#plt.figure(figsize=(10, 5))
-#plt.plot(
-    #monthly_sales["Month"],
-    #monthly_sales["Sales"],
-    #marker="o",
-    #linewidth=2
-#)
-#plt.gca().yaxis.set_major_formatter(
-    #FuncFormatter(lambda x, _: f'{x/1000000:.0f}M')
-#)
-#plt.title("Monthly Sales Trend", fontsize=14, fontweight="bold")
-#plt.xlabel("Month", fontsize=12)
-#plt.ylabel("Sales (Millions)", fontsize=6)
-#plt.xticks(fontsize=10)
-#plt.yticks(fontsize=10)
-#plt.grid(True)
-#plt.tight_layout()
-#plt.savefig("output/monthly_sales_line.png", dpi=300, bbox_inches="tight")
-#plt.show()
+plt.figure(figsize=(10, 5))
+plt.plot(
+    monthly_sales["Month"],
+    monthly_sales["Sales"],
+    marker="o",
+    linewidth=2
+)
+plt.gca().yaxis.set_major_formatter(
+    FuncFormatter(lambda x, _: f'{x/1000000:.0f}M')
+)
+plt.title("Monthly Sales Trend", fontsize=14, fontweight="bold")
+plt.xlabel("Month", fontsize=12)
+plt.ylabel("Sales (Millions)", fontsize=6)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.grid(True)
+plt.tight_layout()
+plt.savefig("output/monthly_sales_line.png", dpi=300, bbox_inches="tight")
+plt.show()
 
 # Category-wise Sales Pie Chart
 
-#category_sales = (
-    #sales_df.groupby("Category")["Sales"]
-    #.sum()
-    #.sort_values(ascending=False)
-#)
-#plt.figure(figsize=(6, 6))
-#plt.pie(
-    #category_sales,
-    #labels=category_sales.index,
-    #autopct="%1.1f%%",
-    #startangle=90
-#)
-#plt.title("Category-wise Sales Distribution", fontsize=14, fontweight="bold")
-#plt.tight_layout()
-#plt.savefig("output/category_sales_pie.png", dpi=300, bbox_inches="tight")
-#plt.show()
+category_sales = (
+    sales_df.groupby("Category")["Sales"]
+    .sum()
+    .sort_values(ascending=False)
+)
+plt.figure(figsize=(6, 6))
+plt.pie(
+    category_sales,
+    labels=category_sales.index,
+    autopct="%1.1f%%",
+    startangle=90
+)
+plt.title("Category-wise Sales Distribution", fontsize=14, fontweight="bold")
+plt.tight_layout()
+plt.savefig("output/category_sales_pie.png", dpi=300, bbox_inches="tight")
+plt.show()
 
 # Top 10 Products by Sales
 
-#plt.figure(figsize=(10, 6))
+plt.figure(figsize=(10, 6))
 
-#plt.barh(
-    #top_products.index,
-    #top_products.values
-#)
+plt.barh(
+    top_products.index,
+    top_products.values
+)
 
-#plt.gca().xaxis.set_major_formatter(
-    #FuncFormatter(lambda x, _: f'{x/1000000:.1f}M')
-#)
+plt.gca().xaxis.set_major_formatter(
+    FuncFormatter(lambda x, _: f'{x/1000000:.1f}M')
+)
 
-#plt.title("Top 10 Selling Products", fontsize=14, fontweight="bold")
-#plt.xlabel("Sales (Millions)")
-#plt.ylabel("Product")
-#plt.gca().invert_yaxis()
-#plt.tight_layout()
-#plt.savefig("output/top10_products.png", dpi=300, bbox_inches="tight")
-#plt.show()
+plt.title("Top 10 Selling Products", fontsize=14, fontweight="bold")
+plt.xlabel("Sales (Millions)")
+plt.ylabel("Product")
+plt.gca().invert_yaxis()
+plt.tight_layout()
+plt.savefig("output/top10_products.png", dpi=300, bbox_inches="tight")
+plt.show()
 
 
 # Correlation Heatmap
 
-#correlation = sales_df[["Sales", "Quantity", "Profit", "Discount"]].corr()
+correlation = sales_df[["Sales", "Quantity", "Profit", "Discount"]].corr()
 
-#print("\nCorrelation Matrix")
-#print(correlation)
+print("\nCorrelation Matrix")
+print(correlation)
 
-#plt.figure(figsize=(8, 6))
+plt.figure(figsize=(8, 6))
 
-#sns.heatmap(
-    #correlation,
-    #annot=True,
-    #cmap="coolwarm",
-    #linewidths=0.5,
-    #fmt=".2f"
-#)
+sns.heatmap(
+    correlation,
+    annot=True,
+    cmap="coolwarm",
+    linewidths=0.5,
+    fmt=".2f"
+)
 
-#plt.title("Correlation Heatmap", fontsize=14, fontweight="bold")
+plt.title("Correlation Heatmap", fontsize=14, fontweight="bold")
 
-#plt.tight_layout()
-#plt.savefig("output/correlation_heatmap.png", dpi=300, bbox_inches="tight")
-#plt.show()
+plt.tight_layout()
+plt.savefig("output/correlation_heatmap.png", dpi=300, bbox_inches="tight")
+plt.show()
 
 print("\n====== BUSINESS INSIGHTS ======")
 
